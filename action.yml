@@ -2,15 +2,18 @@
 name: 'Redash Queries VCS'
 description: 'versioning redash queries'
 inputs:
-  address: 
+  redash_address: 
     description: 'your redash address. (ex. https://redash.acme.com or https://app.redash.io/acme)'
     required: true
-  api_key:
+  redash_api_key:
     description: 'your redash api key. (you can find it here: https://[REDASH ADDRESS]/users/me#apiKey)'
     required: true
+  github_token:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    required: true
+  branch:
+    description: 'Destination branch to push changes'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.address }}
-    - ${{ inputs.api-key }}
