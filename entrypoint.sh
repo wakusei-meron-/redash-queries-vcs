@@ -3,8 +3,6 @@
 git config user.name "${GITHUB_USER}"
 git config user.name "${GITHUB_EMAIL}"
 
-mkdir
-
 echo "export queries..."
 python query_export.py --redash-url "${INPUT_ADDRESS}" --api-key "${INPUT_API_KEY}"
 
