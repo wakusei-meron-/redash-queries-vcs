@@ -17,10 +17,6 @@ if [ -n "$(git diff --cached --name-only)" ]; then
   REPOSITORY=${INPUT_REPOSITORY:-$GITHUB_REPOSITORY}
 
   echo "Push to branch $INPUT_BRANCH";
-  [ -z "${INPUT_GITHUB_TOKEN}" ] && {
-      echo 'Missing input "github_token: ${{ secrets.GITHUB_TOKEN }}".';
-      exit 1;
-  };
 
   if ${INPUT_FORCE}; then
       _FORCE_OPTION='--force'
@@ -32,10 +28,9 @@ if [ -n "$(git diff --cached --name-only)" ]; then
 
   cd ${INPUT_DIRECTORY}
 
-  git rebase
   git commit -m "update: $(date +%FT%R)"
 
-  remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+  remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
   git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS;
 fi
 
