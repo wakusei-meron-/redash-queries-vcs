@@ -32,16 +32,10 @@ if [ -n "$(git diff --cached --name-only)" ]; then
 
   cd ${INPUT_DIRECTORY}
 
+  git rebase
+  git commit -m "update: $(date +%FT%R)"
+
   remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
-
   git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS;
-
-  # current_branch=${GITHUB_REF#refs/heads/}
-  # echo ${current_branch}
-
-  # git rebase
-  # remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-  # git commit -m "update: $(date +%FT%R)"
-  # git push
 fi
 
