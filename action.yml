@@ -1,0 +1,16 @@
+# action.yml
+name: 'Redash Queries VCS'
+description: 'versioning redash queries'
+inputs:
+  address: 
+    description: 'your redash address. (ex. https://redash.acme.com or https://app.redash.io/acme)'
+    required: true
+  api_key:
+    description: 'your redash api key. (you can find it here: https://[REDASH ADDRESS]/users/me#apiKey)'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.address }}
+    - ${{ inputs.api-key }}
