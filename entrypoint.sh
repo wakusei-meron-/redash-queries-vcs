@@ -32,7 +32,6 @@ if [ -n "$(git diff --cached --name-only)" ]; then
 
   cd ${INPUT_DIRECTORY}
 
-  git rebase
   git commit -m "update: $(date +%FT%R)"
 
   remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
