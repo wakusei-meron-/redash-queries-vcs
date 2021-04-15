@@ -14,6 +14,7 @@ if [ -n "$(git diff --cached --name-only)" ]; then
 
   remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
   git commit -m "update: $(date +%FT%R)"
-  git push ${remote_repo}
+  git pull
+  git push
 fi
 
