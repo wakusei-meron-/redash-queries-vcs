@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 git config user.name "${GITHUB_USER}"
-git config user.name "${GITHUB_EMAIL}"
+git config user.email "${GITHUB_EMAIL}"
 
 echo "export queries..."
 python query_export.py --redash-url "${INPUT_ADDRESS}" --api-key "${INPUT_API_KEY}"
