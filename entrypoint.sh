@@ -4,7 +4,7 @@ git config user.name "${GITHUB_USER:-vesrioning redash user}"
 git config user.email "${GITHUB_EMAIL:-redash-versioning-queries@users.noreply.github.com'}"
 
 echo "export queries..."
-python query_export.py --redash-url "${INPUT_ADDRESS}" --api-key "${INPUT_API_KEY}"
+python query_export.py --redash-url "${INPUT_REDASH_ADDRESS}" --api-key "${INPUT_REDASH_API_KEY}"
 
 
 git add .
