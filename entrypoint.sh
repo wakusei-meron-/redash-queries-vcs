@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
 git config user.name "${GITHUB_USER:-vesrioning redash user}"
 git config user.email "${GITHUB_EMAIL:-redash-versioning-queries@users.noreply.github.com'}"
 
